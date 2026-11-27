@@ -23,7 +23,10 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
       observer.unobserve(entry.target);
     }
   }, { threshold: .12 });
-  $$('.reveal').forEach(element => observer.observe(element));
+  $$('.reveal, .section-actions').forEach(element => {
+    if (element.matches('.section-actions') && element.closest('.page-hero')) return;
+    observer.observe(element);
+  });
 }
 
 $$('.faq-button').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),open=item.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))}));
