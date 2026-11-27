@@ -604,3 +604,118 @@ section[id] { scroll-margin-top: 90px; }
   .global-map { min-height: 340px; }
   .global-map svg { align-self: start; margin-top: 40px; }
 }
+
+/* Home consultation section */
+.section.consultation {
+  background: #eeefe6;
+  padding-block: clamp(64px, 9vw, 128px);
+}
+
+.consultation-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: clamp(22px, 3vw, 38px);
+  background: #faf9f2;
+  box-shadow: 0 22px 60px rgba(23, 45, 37, .09);
+}
+
+.consultation-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 20px;
+  min-height: 510px;
+  padding: clamp(30px, 4vw, 62px);
+  color: var(--white);
+  background:
+    linear-gradient(180deg, rgba(14, 45, 37, .10), #102f27 87%),
+    url("images/therapy-room.jpg") center 42% / cover no-repeat,
+    var(--forest);
+}
+
+.consultation-intro .eyebrow,
+.consultation-intro .lede {
+  margin: 0;
+}
+
+.consultation-intro .eyebrow { color: #dce6c9; }
+
+.consultation-intro .display {
+  max-width: 10ch;
+  font-size: clamp(3.6rem, 6vw, 6.2rem);
+}
+
+.consultation-intro em { color: #dce6c9; }
+
+.consultation-intro .lede {
+  max-width: 34ch;
+  color: #f0f1e8;
+  font-size: clamp(.95rem, 1.25vw, 1.1rem);
+}
+
+.consultation-content {
+  align-self: center;
+  min-width: 0;
+  padding: clamp(26px, 4vw, 62px);
+}
+
+.consultation-questions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.consultation-questions li {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  gap: 17px;
+  align-items: baseline;
+  padding-block: clamp(15px, 1.7vw, 24px);
+  border-bottom: 1px solid var(--line);
+  font: 400 clamp(1.7rem, 2.7vw, 2.65rem) / 1.06 var(--serif);
+  text-wrap: pretty;
+}
+
+.consultation-questions li::before {
+  content: "";
+  align-self: start;
+  width: 6px;
+  height: 6px;
+  margin-top: .5em;
+  border-radius: 50%;
+  background: var(--pine);
+}
+
+.consultation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(22px, 3vw, 38px);
+}
+
+.consultation-actions .btn { gap: 10px; }
+
+.consultation-actions .btn:focus-visible {
+  outline: 2px solid var(--pine);
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .consultation-layout { grid-template-columns: 1fr; }
+  .consultation-intro { min-height: 380px; }
+  .consultation-content { padding: 26px; }
+}
+
+@media (max-width: 440px) {
+  .consultation-intro {
+    min-height: 350px;
+    gap: 14px;
+    padding: 24px;
+  }
+
+  .consultation-content { padding: 20px; }
+  .consultation-actions .btn { flex-basis: 100%; }
+}

@@ -16,6 +16,7 @@ Nueva web de Family Hold (https://www.familyhold.com.ar/), servicio de terapia d
 La auditoría del 27/11/2026 detectó rechazo por Destino no operativo. Las pruebas externas simulando User-Agent de AdsBot recibieron HTTP 429, mientras el navegador común recibió 200. No se confirmó qué capa genera el bloqueo ni se probaron visitas desde IPs auténticas de Google. Una nueva web no garantiza por sí sola eliminar una regla del hosting o firewall.
 
 ## Validación y entrega
+- Publicar los cambios aprobados del sitio en el GitHub Pages del proyecto mediante el flujo de la rama main y verificar el despliegue y la URL pública.
 - Comprobar enlaces, rutas, imágenes, vista móvil, metadatos y estados HTTP.
 - Validar acceso de rastreadores en el alojamiento final y revisar registros de AdsBot real cuando estén disponibles.
 - No incorporar credenciales, conversaciones privadas, datos de pacientes ni informes de cuenta al repositorio.
