@@ -55,6 +55,46 @@ main img { height: auto; }
 .quote-panel .quote { max-width: none; font-size: clamp(2.4rem, 4.5vw, 5rem); }
 .virtual-feature { background: #e5ebdf; }
 
+.section.process-approach {
+  background:
+    radial-gradient(ellipse at 13% 0%, #365b43 0%, transparent 56%),
+    radial-gradient(ellipse at 100% 100%, #294c3f 0%, transparent 57%),
+    linear-gradient(135deg, #123b31, #0c2924);
+}
+.process-approach .step {
+  --step-glow: rgb(180 195 126 / 20%);
+  padding: clamp(26px, 3vw, 42px);
+  border-color: rgb(224 235 202 / 22%);
+  background:
+    radial-gradient(ellipse at 0 0, var(--step-glow), transparent 72%),
+    linear-gradient(150deg, #2c5544, #16392f 65%, #102e28);
+  box-shadow: inset 0 1px rgb(255 255 255 / 10%), 0 14px 38px rgb(4 23 19 / 19%);
+}
+.process-approach .step:nth-child(2) { --step-glow: rgb(137 191 168 / 26%); }
+.process-approach .step:nth-child(3) { --step-glow: rgb(211 176 117 / 23%); }
+.process-approach .step::before { content: none; }
+.process-approach .step h3 { margin: 25px 0 12px; line-height: 1.1; }
+.process-approach .step p { margin: 0; color: #eef3e9; }
+.process-step-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  color: #eff4e4;
+  border: 1px solid rgb(237 246 222 / 26%);
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgb(214 226 190 / 20%), rgb(214 226 190 / 4%));
+}
+.process-step-icon svg {
+  width: 46px;
+  height: 46px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.process-step-icon .icon-accent { stroke: var(--gold); }
+
 .services-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: auto;
@@ -291,6 +331,24 @@ section[id] { scroll-margin-top: 90px; }
   .page-hero-grid > :first-child, .story-scene.active .story-content { animation: lift-in .85s var(--ease) both; }
   .hero-photo { animation: photo-in .95s var(--ease) both; }
   .global-map.visible svg path { animation: lift-in 1.1s .15s var(--ease) both; }
+  .process-approach .step.visible .process-step-icon [pathLength] {
+    animation: process-icon-draw 1.05s var(--icon-delay, 110ms) var(--ease) both;
+  }
+  .process-approach .step:nth-child(2) { --icon-delay: 210ms; }
+  .process-approach .step:nth-child(3) { --icon-delay: 310ms; }
+  :is(.editorial-photo, .portrait-frame, .profile-photo).visible > img,
+  .service-card.visible .service-image img {
+    animation: editorial-dolly 1.9s var(--ease) both;
+    transform-origin: center 44%;
+  }
+  @keyframes process-icon-draw {
+    from { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .3; }
+    to { stroke-dasharray: 1; stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes editorial-dolly {
+    from { scale: 1; }
+    to { scale: 1.025; }
+  }
   @keyframes lift-in {
     from { opacity: .65; translate: 0 18px; }
     to { opacity: 1; translate: 0 0; }
