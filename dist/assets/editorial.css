@@ -152,6 +152,62 @@ main img { height: auto; }
 .service-body h3 { max-width: none; font-size: clamp(2.1rem, 3vw, 3.4rem); text-wrap: balance; }
 .service-body .btn { margin-top: auto; }
 .service-body p:not(.eyebrow) { margin-bottom: 26px; }
+.service-body p:not(.eyebrow),
+.step p,
+.contact-card p:not(.eyebrow),
+.global-card p:not(.eyebrow),
+.service-topic p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.desktop-nav { gap: clamp(12px, 1.45vw, 24px); }
+.desktop-nav a { white-space: nowrap; }
+.mobile-panel { overflow-y: auto; align-content: safe center; }
+.mobile-links a { font-size: clamp(1.9rem, min(9vw, 6.1vh), 3.7rem); }
+@media (min-width: 1024px) and (max-width: 1150px) and (pointer: fine) {
+  .nav-wrap { gap: 16px; }
+  .desktop-nav a { font-size: .7rem; }
+}
+
+.service-hero .display em { color: var(--gold); }
+.service-hero.light .display em { color: var(--moss); }
+.service-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.service-topic {
+  min-width: 0;
+  padding: clamp(24px, 3.5vw, 46px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(140deg, #faf9f3, #e7eee1);
+}
+.service-topic:nth-child(2n) { background: linear-gradient(140deg, #f8faf3, #dfe9dd); }
+.service-topic h3 {
+  margin: 0 0 10px;
+  font: 400 clamp(1.85rem, 3.2vw, 3rem) / 1 var(--serif);
+}
+.service-topic p { max-width: 40ch; margin: 0; }
+.service-focus-copy .display {
+  margin-bottom: 24px;
+  font-size: clamp(3rem, 6vw, 6.25rem);
+  line-height: .98;
+}
+.service-focus-copy > p:not(.eyebrow) { max-width: 55ch; }
+.service-faq { border-top: 1px solid var(--line); }
+.service-faq:last-child { border-bottom: 1px solid var(--line); }
+.service-faq > summary { list-style: none; }
+.service-faq > summary::-webkit-details-marker { display: none; }
+.service-faq > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.service-faq[open] summary > :last-child { transform: rotate(45deg); }
+.service-faq > p { max-width: 58ch; margin: 0 auto 24px; padding-inline: 14px; text-align: center; }
+@media (max-width: 580px) {
+  .service-topic-grid { grid-template-columns: 1fr; }
+}
 
 .page-hero {
   display: block;
