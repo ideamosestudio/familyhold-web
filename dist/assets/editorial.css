@@ -218,33 +218,40 @@ main img { height: auto; }
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: clamp(14px, 3vh, 30px);
-    padding-top: clamp(100px, 16vh, 145px);
-    padding-bottom: clamp(16px, 5vh, 50px);
+    gap: clamp(24px, 4.6vh, 48px);
+    padding: clamp(106px, 17vh, 152px) max(6vw, 48px) clamp(28px, 5vh, 58px);
   }
-  .scene-1 .story-content { width: min(55%, 740px); }
+  .scene-1 .story-content { width: min(57%, 810px); }
+  .scene-1 .story-content .eyebrow { margin-bottom: clamp(20px, 3.8vh, 38px); }
   .scene-1 .story-content .display {
     max-width: 13ch;
-    font-size: clamp(3.25rem, min(7.5vw, 12.2vh), 8rem);
   }
   .scene-1 .story-copy {
     align-self: flex-start;
     width: min(51%, 520px);
   }
   .scene-1 .story-copy p { margin: 0; font-size: clamp(.88rem, 2.2vh, 1.05rem); line-height: 1.5; }
-  .scene-1 .story-actions { margin-top: 14px; gap: 12px 20px; }
-  .scene-1 .story-copy .btn { min-height: 44px; }
+  .scene-1 .story-actions { margin-top: clamp(22px, 4vh, 36px); }
+  .scene-1 .story-copy .btn { min-height: 48px; }
+}
+@media (min-width: 1024px) and (pointer: fine) and (max-height: 650px) {
+  .story-scene.scene-1 { gap: 24px; padding-block: 102px 22px; }
+  .scene-1 .story-content .eyebrow { margin-bottom: 19px; }
+  .scene-1 .story-actions { margin-top: 22px; }
 }
 @media (max-width: 1023px), (pointer: coarse) {
   .mobile-hero {
     min-height: auto;
-    padding: 105px 0 50px;
+    padding: 108px 0 64px;
     background: linear-gradient(155deg, #153f32, #0b2c23);
   }
   .mobile-hero-media {
-    width: min(100% - 28px, 880px);
-    margin: 0 auto 28px;
+    width: min(100% - 44px, 880px);
+    margin: 0 auto 34px;
   }
+  .mobile-hero .shell { width: min(100% - 44px, 880px); }
+  .mobile-hero .eyebrow { margin-bottom: 23px; }
+  .mobile-hero .story-actions { margin-top: 30px; }
   .mobile-hero .display { max-width: 15ch; font-size: clamp(3.25rem, 8vw, 5.5rem); }
 }
 @media (max-width: 580px) {
