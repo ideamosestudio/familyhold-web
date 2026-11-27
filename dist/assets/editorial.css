@@ -461,6 +461,13 @@ section[id] { scroll-margin-top: 90px; }
 .menu-open .whatsapp-float { visibility: hidden; }
 
 @media (min-width: 1024px) and (pointer: fine) {
+  :is(.scene-2, .scene-3) .story-copy { width: min(100%, 470px); }
+  :is(.scene-2, .scene-3) .story-actions { flex-wrap: nowrap; gap: 12px; }
+  :is(.scene-2, .scene-3) .story-actions .btn {
+    min-width: 0;
+    padding-inline: clamp(14px, 1.5vw, 22px);
+    text-align: center;
+  }
   .story-scene.scene-1 {
     display: flex;
     flex-direction: column;
