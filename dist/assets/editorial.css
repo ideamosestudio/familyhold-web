@@ -176,12 +176,14 @@ main img { height: auto; }
 .contact-social { padding-block: clamp(45px, 7vw, 82px); background: var(--paper); }
 .social-layout {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: center;
-  gap: clamp(20px, 5vw, 70px);
+  justify-items: center;
+  gap: clamp(22px, 3vw, 36px);
+  text-align: center;
 }
 .social-layout h2 { font-size: clamp(2.7rem, 5vw, 5.3rem); }
-.social-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.social-links .btn { gap: 10px; }
+.social-links svg { flex: 0 0 19px; width: 19px; height: 19px; }
 .contact-card { min-height: 300px; }
 .contact-lines a { overflow-wrap: anywhere; }
 .section.closing-cta {
@@ -518,7 +520,7 @@ section[id] { scroll-margin-top: 90px; }
   .profile-sticky { position: relative; top: auto; }
 }
 @media(max-width: 580px) {
-  .services-grid, .social-layout { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
   .page-hero .display { font-size: clamp(2.8rem, 12vw, 4rem); }
   .section { padding-block: 60px; }
   .footer-title { font-size: clamp(2.8rem, 12vw, 4rem); }
