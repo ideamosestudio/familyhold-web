@@ -241,6 +241,15 @@ main img { height: auto; }
   gap: 12px;
   margin-top: clamp(24px, 4vw, 44px);
 }
+.hero-copy .section-actions .btn { margin-top: 0; }
+.site-footer .section-actions { margin-top: 0; }
+.centered-section .section-head {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.centered-section .eyebrow, .centered-section .section-actions { justify-content: center; }
 section[id] { scroll-margin-top: 90px; }
 
 .whatsapp-float {
@@ -306,6 +315,7 @@ section[id] { scroll-margin-top: 90px; }
   .mobile-hero .shell { width: min(100% - 44px, 880px); }
   .mobile-hero .eyebrow { margin-bottom: 23px; }
   .mobile-hero .story-actions { margin-top: 30px; }
+  .mobile-hero .story-actions { flex-direction: row; }
   .mobile-hero .display { max-width: 15ch; font-size: clamp(3.25rem, 8vw, 5.5rem); }
 }
 @media (max-width: 580px) {
