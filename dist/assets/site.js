@@ -15,15 +15,49 @@ const cleanPath=p=>p.replace(/^\/familyhold-web/,'').replace(/index\.html$/,'')|
 const route=cleanPath(location.pathname);
 $$('[data-nav]').forEach(a=>{const p=cleanPath(new URL(a.href).pathname);if((route==='/'&&p==='/')||(route!=='/'&&p===route))a.setAttribute('aria-current','page')});
 
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});
-$$('.reveal').forEach(el=>io.observe(el));
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: .12 });
+  $$('.reveal').forEach(element => observer.observe(element));
+}
 
 $$('.faq-button').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),open=item.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))}));
 
-const story=$('.desktop-story'), scenes=$$('.story-scene'), progress=$('.story-progress strong');
-if(story&&matchMedia('(min-width:1024px) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
- const update=()=>{const r=story.getBoundingClientRect(),range=story.offsetHeight-innerHeight,p=Math.min(1,Math.max(0,-r.top/range)),i=Math.min(2,Math.floor(p*3));scenes.forEach((s,n)=>s.classList.toggle('active',n===i));if(progress)progress.textContent=`0${i+1}`};
- addEventListener('scroll',update,{passive:true});update();
+const story = $('.desktop-story');
+if (story) {
+  const scenes = $$('.story-scene', story);
+  const progress = $('.story-progress strong', story);
+  const desktopMotion = matchMedia('(min-width:1024px) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
+  let frame = 0;
+  let activeScene = -1;
+
+  function updateStory() {
+    frame = 0;
+    const range = Math.max(1, story.offsetHeight - innerHeight);
+    const fraction = Math.max(0, -story.getBoundingClientRect().top / range);
+    const index = desktopMotion.matches ? Math.min(scenes.length - 1, Math.floor(fraction * scenes.length)) : -1;
+    if (index === activeScene) return;
+    activeScene = index;
+    scenes.forEach((scene, position) => {
+      scene.classList.toggle('active', position === Math.max(0, index));
+      scene.inert = index >= 0 && position !== index;
+    });
+    if (progress) progress.textContent = String(Math.max(0, index) + 1).padStart(2, '0');
+  }
+
+  function queueStoryUpdate() {
+    if (!frame) frame = requestAnimationFrame(updateStory);
+  }
+
+  addEventListener('scroll', queueStoryUpdate, { passive: true });
+  addEventListener('resize', queueStoryUpdate);
+  desktopMotion.addEventListener('change', queueStoryUpdate);
+  updateStory();
 }
 
 const year=$('[data-year]');if(year)year.textContent=new Date().getFullYear();
