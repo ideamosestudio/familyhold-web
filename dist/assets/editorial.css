@@ -171,6 +171,13 @@ main img { height: auto; }
 .scene-1 .scene-media::after {
   background: linear-gradient(90deg, #0a251d 0%, rgb(10 37 29 / 78%) 38%, transparent 72%);
 }
+.scene-1 .story-copy {
+  padding: 0;
+  border: 0;
+  background: none;
+  backdrop-filter: none;
+  box-shadow: none;
+}
 .mobile-hero-media { overflow: hidden; border-radius: 18px; }
 .mobile-hero-media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: right center; }
 
@@ -223,8 +230,6 @@ main img { height: auto; }
   .scene-1 .story-copy {
     align-self: flex-start;
     width: min(51%, 520px);
-    padding: clamp(14px, 2.25vh, 25px);
-    background: rgb(25 53 42 / 64%);
   }
   .scene-1 .story-copy p { margin: 0; font-size: clamp(.88rem, 2.2vh, 1.05rem); line-height: 1.5; }
   .scene-1 .story-actions { margin-top: 14px; gap: 12px 20px; }
