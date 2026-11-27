@@ -165,6 +165,13 @@ main img { height: auto; }
 .desktop-nav a { white-space: nowrap; }
 .mobile-panel { overflow-y: auto; align-content: safe center; }
 .mobile-links a { font-size: clamp(1.9rem, min(9vw, 6.1vh), 3.7rem); }
+.mobile-links .mobile-consult {
+  justify-self: start;
+  margin-top: 16px;
+  font-family: var(--sans);
+  font-size: .88rem;
+  line-height: 1.25;
+}
 @media (min-width: 1024px) and (max-width: 1150px) and (pointer: fine) {
   .nav-wrap { gap: 16px; }
   .desktop-nav a { font-size: .7rem; }
