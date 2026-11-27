@@ -514,7 +514,6 @@ section[id] { scroll-margin-top: 90px; }
 }
 @media (max-width: 580px) {
   .mobile-hero-media img { aspect-ratio: 3 / 2; }
-  .site-footer .footer-bottom { padding-right: 62px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -603,6 +602,58 @@ section[id] { scroll-margin-top: 90px; }
   .footer-title { font-size: clamp(2.8rem, 12vw, 4rem); }
   .global-map { min-height: 340px; }
   .global-map svg { align-self: start; margin-top: 40px; }
+}
+
+.site-footer .footer-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 60px);
+  scroll-margin-top: 100px;
+}
+.site-footer .footer-grid > .footer-summary { grid-column: auto; }
+.footer-grid .footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  font: 400 2.25rem / 1 var(--serif);
+}
+.footer-brand img { flex: none; object-fit: contain; }
+.footer-summary .footer-signature {
+  margin: 14px 0 0;
+  color: #d1dfce;
+  font-weight: 700;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+}
+.footer-grid .footer-whatsapp, .footer-grid .footer-whatsapp:hover {
+  gap: 8px;
+  padding-inline: 16px;
+  font-size: .8rem;
+  overflow-wrap: normal;
+  text-align: center;
+  text-decoration: none;
+}
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  margin-top: 5px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+}
+.footer-social a { font-size: .8rem; }
+.site-footer .footer-bottom { padding-inline-end: 76px; }
+
+@media (max-width: 960px) {
+  .site-footer .footer-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  .site-footer .footer-grid > .footer-summary { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+  .site-footer .footer-grid { grid-template-columns: minmax(0, 1fr); }
+  .site-footer .footer-bottom { gap: 10px; }
 }
 
 /* Home consultation section */
