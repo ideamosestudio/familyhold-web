@@ -248,6 +248,11 @@ main img { height: auto; }
   gap: 12px;
   margin-top: clamp(24px, 4vw, 44px);
 }
+/* Section-wide actions follow the center of the full grid, not its first column. */
+.section > .shell > .section-actions,
+.centered-section .section-actions {
+  justify-content: center;
+}
 .hero-copy .section-actions .btn { margin-top: 0; }
 .site-footer .section-actions { margin-top: 0; }
 .centered-section .section-head {
@@ -256,7 +261,7 @@ main img { height: auto; }
   gap: 20px;
   text-align: center;
 }
-.centered-section .eyebrow, .centered-section .section-actions { justify-content: center; }
+.centered-section .eyebrow { justify-content: center; }
 section[id] { scroll-margin-top: 90px; }
 
 .whatsapp-float {
