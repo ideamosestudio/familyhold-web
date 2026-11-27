@@ -355,6 +355,7 @@ main img { height: auto; }
 .scene-2 .scene-media { inset: 0 0 0 35%; }
 .scene-2 .scene-media::after { background: linear-gradient(90deg, var(--forest), transparent 55%); }
 .scene-2 .scene-media img { object-position: 50% 42%; }
+.story-scene .scene-media img { transform: none; transition: none; }
 .story-progress { color: white; text-shadow: 0 1px 8px #112e22; }
 .reveal { opacity: 1; transform: none; }
 
@@ -506,7 +507,7 @@ section[id] { scroll-margin-top: 90px; }
   .story-scene .story-copy { opacity: 1; transform: none; }
 }
 @media (hover: hover) and (pointer: fine) {
-  .editorial-photo:hover img, .profile-photo:hover img { transform: scale(1.025); }
+  .service-card:hover .service-image img { transform: none; }
   .services-grid .service-card:hover, .services-grid .service-card:focus-visible {
     border-color: #829780;
     box-shadow: 0 15px 38px rgb(18 60 50 / 12%);
@@ -536,11 +537,13 @@ section[id] { scroll-margin-top: 90px; }
   }
   .process .step:nth-child(2) { --icon-delay: 210ms; }
   .process .step:nth-child(3) { --icon-delay: 310ms; }
-  :is(.editorial-photo, .portrait-frame, .profile-photo).visible > img,
-  .hero-photo > img,
-  .service-card.visible .service-image img {
-    animation: editorial-dolly 1.9s var(--ease) both;
+  main img.image-visible,
+  .story-scene.active .scene-media img {
+    animation: editorial-dolly 2.6s cubic-bezier(.24,.48,.38,1) both;
     transform-origin: center 44%;
+  }
+  .nav-wrap .brand-mark, .footer-identity img.image-visible {
+    animation: mark-in .8s var(--ease) both;
   }
   @keyframes process-icon-draw {
     from { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .3; }
@@ -548,7 +551,11 @@ section[id] { scroll-margin-top: 90px; }
   }
   @keyframes editorial-dolly {
     from { scale: 1; }
-    to { scale: 1.025; }
+    to { scale: 1.035; }
+  }
+  @keyframes mark-in {
+    from { opacity: .62; scale: .97; }
+    to { opacity: 1; scale: 1; }
   }
   @keyframes element-in {
     from { opacity: .18; translate: 0 24px; }

@@ -19,11 +19,20 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+      const element = entry.target;
+      observer.unobserve(element);
+      if (element instanceof HTMLImageElement) {
+        const revealImage = () => {
+          if (element.naturalWidth) element.classList.add('image-visible');
+        };
+        if (element.complete) revealImage();
+        else element.addEventListener('load', revealImage, { once: true });
+      } else {
+        element.classList.add('visible');
+      }
     }
   }, { threshold: .12 });
-  $$('.reveal, .section-actions').forEach(element => {
+  $$('.reveal, .section-actions, main img:not(.scene-media img), .footer-identity img').forEach(element => {
     if (element.matches('.section-actions') && element.closest('.page-hero')) return;
     observer.observe(element);
   });
