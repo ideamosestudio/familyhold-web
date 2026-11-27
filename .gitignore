@@ -1,0 +1,16 @@
+# Dependencias y archivos generados
+node_modules/
+dist/
+build/
+.cache/
+coverage/
+
+# Variables de entorno y registros
+.env
+.env.*
+!.env.example
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
