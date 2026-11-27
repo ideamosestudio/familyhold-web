@@ -167,6 +167,86 @@ main img { height: auto; }
 .story-progress { color: white; text-shadow: 0 1px 8px #112e22; }
 .reveal { opacity: 1; transform: none; }
 
+.scene-1 .scene-media img { object-position: right 25%; }
+.scene-1 .scene-media::after {
+  background: linear-gradient(90deg, #0a251d 0%, rgb(10 37 29 / 78%) 38%, transparent 72%);
+}
+.mobile-hero-media { overflow: hidden; border-radius: 18px; }
+.mobile-hero-media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: right center; }
+
+.btn {
+  background: linear-gradient(120deg, #2f6752, #153c31 72%);
+  border-color: rgb(118 162 137 / 35%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 15%), 0 5px 14px rgb(10 37 29 / 17%);
+}
+.btn.light { background: linear-gradient(120deg, #fffdf4 12%, #d9e6cd 96%); }
+.btn:not(.light):hover { background: linear-gradient(120deg, #3b765d, #204b3d 75%); }
+.btn.light:hover { background: linear-gradient(120deg, #fffdf4, #c6dcbb); }
+.btn::after { content: none; }
+
+.whatsapp-float {
+  position: fixed;
+  z-index: 80;
+  right: calc(clamp(14px, 2.5vw, 34px) + env(safe-area-inset-right, 0px));
+  bottom: calc(clamp(14px, 2.5vw, 30px) + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 32%);
+  background: linear-gradient(145deg, #288654, #12503a 88%);
+  color: #fff;
+  box-shadow: 0 6px 22px rgb(10 37 29 / 32%);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.whatsapp-float svg { width: 29px; height: 29px; }
+.whatsapp-float:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgb(10 37 29 / 42%); }
+.whatsapp-float:focus-visible { outline-color: #64896a; }
+.menu-open .whatsapp-float { visibility: hidden; }
+
+@media (min-width: 1024px) and (pointer: fine) {
+  .story-scene.scene-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(14px, 3vh, 30px);
+    padding-top: clamp(100px, 16vh, 145px);
+    padding-bottom: clamp(16px, 5vh, 50px);
+  }
+  .scene-1 .story-content { width: min(55%, 740px); }
+  .scene-1 .story-content .display {
+    max-width: 13ch;
+    font-size: clamp(3.25rem, min(7.5vw, 12.2vh), 8rem);
+  }
+  .scene-1 .story-copy {
+    align-self: flex-start;
+    width: min(51%, 520px);
+    padding: clamp(14px, 2.25vh, 25px);
+    background: rgb(25 53 42 / 64%);
+  }
+  .scene-1 .story-copy p { margin: 0; font-size: clamp(.88rem, 2.2vh, 1.05rem); line-height: 1.5; }
+  .scene-1 .story-actions { margin-top: 14px; gap: 12px 20px; }
+  .scene-1 .story-copy .btn { min-height: 44px; }
+}
+@media (max-width: 1023px), (pointer: coarse) {
+  .mobile-hero {
+    min-height: auto;
+    padding: 105px 0 50px;
+    background: linear-gradient(155deg, #153f32, #0b2c23);
+  }
+  .mobile-hero-media {
+    width: min(100% - 28px, 880px);
+    margin: 0 auto 28px;
+  }
+  .mobile-hero .display { max-width: 15ch; font-size: clamp(3.25rem, 8vw, 5.5rem); }
+}
+@media (max-width: 580px) {
+  .mobile-hero-media img { aspect-ratio: 3 / 2; }
+  .site-footer .footer-bottom { padding-right: 62px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .story-scene .story-copy { opacity: 1; transform: none; }
 }
@@ -202,7 +282,6 @@ main img { height: auto; }
   .work-block:nth-child(even) .editorial-photo { grid-column: auto; grid-row: auto; }
   .work-block .editorial-photo { max-width: 520px; }
   .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .mobile-hero { background-position: 73% center; }
 }
 @media(max-height: 740px) {
   .profile-sticky { position: relative; top: auto; }
