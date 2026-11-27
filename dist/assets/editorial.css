@@ -79,9 +79,17 @@ main img { height: auto; }
 }
 .process-approach .step:nth-child(2) { --step-glow: rgb(137 191 168 / 26%); }
 .process-approach .step:nth-child(3) { --step-glow: rgb(211 176 117 / 23%); }
-.process-approach .step::before { content: none; }
-.process-approach .step h3 { margin: 25px 0 12px; line-height: 1.1; }
+:is(.process-approach, .virtual-steps) .step::before { content: none; }
+:is(.process-approach, .virtual-steps) .step h3 { margin: 25px 0 12px; line-height: 1.1; }
 .process-approach .step p { margin: 0; color: #eef3e9; }
+.virtual-steps .step {
+  padding: clamp(26px, 3vw, 42px);
+  border-color: var(--line);
+  background: linear-gradient(150deg, #fbfcf6, #e7eee3);
+}
+.virtual-steps .step:nth-child(2) { background: linear-gradient(150deg, #f8f9ee, #e5ebdc); }
+.virtual-steps .step:nth-child(3) { background: linear-gradient(150deg, #f8fbf6, #e0ede4); }
+.virtual-steps .step p { margin: 0; }
 .process-step-icon {
   display: grid;
   place-items: center;
@@ -101,6 +109,12 @@ main img { height: auto; }
   stroke-linejoin: round;
 }
 .process-step-icon .icon-accent { stroke: var(--gold); }
+.virtual-steps .process-step-icon {
+  color: var(--forest);
+  border-color: rgb(36 87 71 / 20%);
+  background: linear-gradient(145deg, #edf2e0, #cfded0);
+}
+.virtual-steps .process-step-icon .icon-accent { stroke: #627943; }
 
 .services-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -459,11 +473,11 @@ section[id] { scroll-margin-top: 90px; }
   .virtual-feature .editorial-photo.visible { animation: photo-in 1s 160ms var(--ease) both; }
   .hero-photo { animation: photo-in .95s var(--ease) both; }
   .global-map.visible svg path { animation: lift-in 1.1s .15s var(--ease) both; }
-  .process-approach .step.visible .process-step-icon [pathLength] {
+  .step.visible .process-step-icon [pathLength] {
     animation: process-icon-draw 1.05s var(--icon-delay, 110ms) var(--ease) both;
   }
-  .process-approach .step:nth-child(2) { --icon-delay: 210ms; }
-  .process-approach .step:nth-child(3) { --icon-delay: 310ms; }
+  .process .step:nth-child(2) { --icon-delay: 210ms; }
+  .process .step:nth-child(3) { --icon-delay: 310ms; }
   :is(.editorial-photo, .portrait-frame, .profile-photo).visible > img,
   .hero-photo > img,
   .service-card.visible .service-image img {
