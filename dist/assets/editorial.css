@@ -437,6 +437,48 @@ main img { height: auto; }
   padding-inline: 12px;
   text-align: center;
 }
+#preguntas-frecuentes .section-head { margin-bottom: clamp(28px, 3.5vw, 46px); }
+#preguntas-frecuentes .faq { max-width: 780px; margin-inline: auto; }
+#preguntas-frecuentes .faq-item[open] { background: #edf2e9; }
+#preguntas-frecuentes .faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px clamp(14px, 3vw, 26px);
+  list-style: none;
+  text-align: left;
+  font-weight: 700;
+  cursor: pointer;
+}
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question:hover { background: rgba(36, 87, 71, .05); }
+.faq-question:focus-visible { outline: 2px solid var(--pine); outline-offset: -3px; }
+.faq-indicator {
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+}
+.faq-indicator::before,
+.faq-indicator::after {
+  content: "";
+  grid-area: 1 / 1;
+  width: 10px;
+  height: 1.5px;
+  background: currentColor;
+}
+.faq-indicator::after { transform: rotate(90deg); }
+.faq-item[open] .faq-indicator::after { visibility: hidden; }
+#preguntas-frecuentes .faq-answer {
+  max-width: 64ch;
+  margin: 0;
+  padding: 0 clamp(14px, 3vw, 26px) 20px;
+  text-align: left;
+  line-height: 1.6;
+}
 section[id] { scroll-margin-top: 90px; }
 
 .whatsapp-float {
