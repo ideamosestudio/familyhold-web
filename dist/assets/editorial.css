@@ -664,20 +664,24 @@ section[id] { scroll-margin-top: 90px; }
   color: #f8f6ed;
 }
 
-.consultation-intro {
-  margin: 0 auto clamp(36px, 5vw, 64px);
-  max-width: 860px;
-  text-align: center;
+.consultation-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  grid-template-areas: "intro questions" "actions questions";
+  column-gap: clamp(44px, 7vw, 108px);
+  row-gap: 28px;
 }
 
+.consultation-intro { grid-area: intro; align-self: end; }
+
 .consultation-intro .eyebrow {
-  justify-content: center;
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   color: #d0ddbb;
 }
 
 .consultation-intro .display {
-  font-size: clamp(3.3rem, 6.3vw, 6rem);
+  max-width: 13ch;
+  font-size: clamp(3.35rem, 5.2vw, 5.1rem);
   line-height: .98;
   text-wrap: balance;
 }
@@ -685,53 +689,37 @@ section[id] { scroll-margin-top: 90px; }
 .consultation-intro em { color: #d0ddbb; }
 
 .consultation-intro .lede {
-  max-width: 53ch;
-  margin: 22px auto 0;
+  max-width: 42ch;
+  margin: 20px 0 0;
   color: #e1e8db;
-  font-size: clamp(.95rem, 1.45vw, 1.125rem);
-  line-height: 1.6;
+  font-size: clamp(.95rem, 1.35vw, 1.075rem);
+  line-height: 1.65;
   text-wrap: pretty;
 }
 
 .consultation-questions {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  grid-area: questions;
+  align-self: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  border-top: 1px solid rgba(227, 238, 215, .28);
 }
 
 .consultation-questions li {
-  padding: clamp(21px, 2.4vw, 34px);
-  border: 1px solid rgba(227, 238, 215, .24);
-  border-radius: 16px;
-  background: rgba(244, 248, 230, .045);
-}
-
-.consultation-topic {
-  display: block;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(227, 238, 215, .24);
-  color: #d0ddbb;
-  font: 700 .7rem / 1.4 var(--sans);
-  letter-spacing: .085em;
-  text-transform: uppercase;
-}
-
-.consultation-questions p {
-  margin: 18px 0 0;
-  font: 400 clamp(1.8rem, 2.5vw, 2.45rem) / 1.07 var(--serif);
+  padding: clamp(16px, 2vw, 26px) 0;
+  border-bottom: 1px solid rgba(227, 238, 215, .28);
+  font: 500 clamp(1.05rem, 1.65vw, 1.35rem) / 1.45 var(--sans);
   text-wrap: pretty;
 }
 
 .consultation-actions {
+  grid-area: actions;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  gap: 14px 27px;
-  margin-top: clamp(26px, 4vw, 42px);
+  align-self: start;
+  gap: 8px 22px;
 }
 
 .consultation-actions .btn.light,
@@ -758,12 +746,11 @@ section[id] { scroll-margin-top: 90px; }
   outline-offset: 4px;
 }
 
-@media (max-width: 1000px) {
-  .consultation-questions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+@media (max-width: 760px) {
+  .consultation-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "intro" "questions" "actions";
+  }
 
-@media (max-width: 520px) {
-  .consultation-questions { grid-template-columns: 1fr; }
-  .consultation-questions p { margin-top: 12px; }
-  .consultation-actions { flex-direction: column; }
+  .consultation-intro .display { font-size: clamp(3rem, 9vw, 4.25rem); }
 }
