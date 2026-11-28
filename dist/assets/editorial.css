@@ -454,31 +454,11 @@ main img { height: auto; }
   font-size: clamp(3.35rem, 6vw, 5.4rem);
   line-height: .98;
 }
-.faq-contact-copy,
 .faq-entry p {
   margin: 0;
   color: #3e534a;
   line-height: 1.65;
 }
-.faq-contact-copy { max-width: 39ch; margin-top: 22px; }
-.faq-contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 21px;
-  margin-top: 24px;
-}
-.faq-email {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--forest);
-  font-size: .86rem;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: .25em;
-}
-.faq-contact-actions a:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
 .faq-answers { border-bottom: 1px solid var(--line); }
 .faq-entry {
   padding-block: clamp(16px, 2vw, 24px);
@@ -810,3 +790,17 @@ section[id] { scroll-margin-top: 90px; }
 
   .consultation-intro .display { font-size: clamp(3rem, 9vw, 4.25rem); }
 }
+
+/* Home page flow */
+.desktop-story.home-hero { height: auto; }
+.home-hero .story-pin { position: relative; height: auto; }
+.home-hero .story-scene.scene-1 { position: relative; min-height: 100svh; }
+#areas-de-trabajo .service-body strong { font-weight: 700; }
+#areas-de-trabajo .service-body .btn { gap: 8px; }
+.home-proposal { padding-block: clamp(48px, 6vw, 88px); }
+.home-proposal .split { align-items: center; }
+.home-proposal .editorial-photo img { aspect-ratio: 4 / 3; }
+.home-proposal .display { font-size: clamp(3rem, 5.5vw, 5.75rem); }
+.home-proposal .lede { margin-bottom: 0; }
+.site-footer.home-footer { padding-top: 0; }
+.home-footer .footer-grid { border-top: 0; }

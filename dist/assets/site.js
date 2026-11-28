@@ -40,36 +40,4 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
 
 $$('.faq-button').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),open=item.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))}));
 
-const story = $('.desktop-story');
-if (story) {
-  const scenes = $$('.story-scene', story);
-  const progress = $('.story-progress strong', story);
-  const desktopMotion = matchMedia('(min-width:1024px) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
-  let frame = 0;
-  let activeScene = -1;
-
-  function updateStory() {
-    frame = 0;
-    const range = Math.max(1, story.offsetHeight - innerHeight);
-    const fraction = Math.max(0, -story.getBoundingClientRect().top / range);
-    const index = desktopMotion.matches ? Math.min(scenes.length - 1, Math.floor(fraction * scenes.length)) : -1;
-    if (index === activeScene) return;
-    activeScene = index;
-    scenes.forEach((scene, position) => {
-      scene.classList.toggle('active', position === Math.max(0, index));
-      scene.inert = index >= 0 && position !== index;
-    });
-    if (progress) progress.textContent = String(Math.max(0, index) + 1).padStart(2, '0');
-  }
-
-  function queueStoryUpdate() {
-    if (!frame) frame = requestAnimationFrame(updateStory);
-  }
-
-  addEventListener('scroll', queueStoryUpdate, { passive: true });
-  addEventListener('resize', queueStoryUpdate);
-  desktopMotion.addEventListener('change', queueStoryUpdate);
-  updateStory();
-}
-
 const year=$('[data-year]');if(year)year.textContent=new Date().getFullYear();
