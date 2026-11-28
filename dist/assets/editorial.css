@@ -437,47 +437,44 @@ main img { height: auto; }
   padding-inline: 12px;
   text-align: center;
 }
-#preguntas-frecuentes .section-head { margin-bottom: clamp(28px, 3.5vw, 46px); }
-#preguntas-frecuentes .faq { max-width: 780px; margin-inline: auto; }
-#preguntas-frecuentes .faq-item[open] { background: #edf2e9; }
-#preguntas-frecuentes .faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 16px clamp(14px, 3vw, 26px);
-  list-style: none;
-  text-align: left;
-  font-weight: 700;
-  cursor: pointer;
+#preguntas-frecuentes {
+  padding-block: clamp(64px, 8vw, 108px);
+  background: #f8f6ee;
 }
-.faq-question::-webkit-details-marker { display: none; }
-.faq-question:hover { background: rgba(36, 87, 71, .05); }
-.faq-question:focus-visible { outline: 2px solid var(--pine); outline-offset: -3px; }
-.faq-indicator {
+#preguntas-frecuentes .section-head { margin-bottom: clamp(30px, 4vw, 48px); }
+#preguntas-frecuentes .display { font-size: clamp(3.2rem, 5vw, 5rem); }
+.faq-grid {
   display: grid;
-  place-items: center;
-  flex: 0 0 28px;
-  height: 28px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px clamp(32px, 6vw, 86px);
+  max-width: 1000px;
+  margin-inline: auto;
 }
-.faq-indicator::before,
-.faq-indicator::after {
-  content: "";
-  grid-area: 1 / 1;
-  width: 10px;
-  height: 1.5px;
-  background: currentColor;
+.faq-entry {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
 }
-.faq-indicator::after { transform: rotate(90deg); }
-.faq-item[open] .faq-indicator::after { visibility: hidden; }
-#preguntas-frecuentes .faq-answer {
-  max-width: 64ch;
+.faq-entry h3 {
+  margin: 0 0 9px;
+  font: 700 clamp(1.05rem, 1.5vw, 1.23rem) / 1.4 var(--sans);
+  text-wrap: pretty;
+}
+.faq-entry p {
+  max-width: 51ch;
   margin: 0;
-  padding: 0 clamp(14px, 3vw, 26px) 20px;
-  text-align: left;
-  line-height: 1.6;
+  color: #3e534a;
+  line-height: 1.65;
+}
+.faq-entry a {
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+.faq-entry a:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .faq-grid { grid-template-columns: minmax(0, 1fr); gap: 22px; }
 }
 section[id] { scroll-margin-top: 90px; }
 
